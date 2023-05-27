@@ -5,25 +5,24 @@ import team.devblook.template.service.ServiceManager;
 
 public class PluginTemplate extends JavaPlugin {
 
-    private ServiceManager serviceManager;
+  private ServiceManager serviceManager;
 
-    @Override
-    public void onLoad() {
-        this.serviceManager = new ServiceManager();
+  @Override
+  public void onLoad() {
+    this.serviceManager = new ServiceManager();
+  }
+
+  @Override
+  public void onEnable() {
+    if (this.serviceManager != null) {
+      this.serviceManager.start();
     }
+  }
 
-    @Override
-    public void onEnable() {
-        if (this.serviceManager != null) {
-            this.serviceManager.start();
-        }
+  @Override
+  public void onDisable() {
+    if (this.serviceManager != null) {
+      this.serviceManager.stop();
     }
-
-    @Override
-    public void onDisable() {
-        if (this.serviceManager != null) {
-            this.serviceManager.stop();
-        }
-    }
-
+  }
 }
